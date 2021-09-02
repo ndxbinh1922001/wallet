@@ -169,7 +169,7 @@ class _SignUpState extends State<SignUp> {
                                         width: 200, height: 50),
                                     child: ElevatedButton(
                                         onPressed: () {
-                                          Navigator.popAndPushNamed(context,Routes.CreatePin);
+                                          Navigator.pushNamed(context,Routes.CreatePin);
                                         },
                                         child: Text(
                                           'Sign up',

@@ -31,7 +31,7 @@ class _CreatePinConfirmState extends State<CreatePinConfirm> {
                     )),
                 Container(
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {Navigator.of(context).pop();},
                     icon: Icon(Icons.arrow_back_ios),
                   ),
                   alignment: Alignment.topLeft,

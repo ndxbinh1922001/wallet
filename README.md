@@ -20,3 +20,4 @@
  - SignUp
  - WelcomeScreen
  ### Photo
+  ! [image] (https://github.com/ndxbinh1922001/wallet/blob/master/welcome.png)
