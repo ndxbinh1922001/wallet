@@ -31,4 +31,6 @@
 <img src="https://github.com/ndxbinh1922001/wallet/blob/master/NewPasswordScreen.png">
 <img src="https://github.com/ndxbinh1922001/wallet/blob/master/QRScanPageScreen.png">
 <img src="https://github.com/ndxbinh1922001/wallet/blob/master/SendICXScreen.png">
+<img src="https://github.com/ndxbinh1922001/wallet/blob/master/SignUpScreen.png">
+<img src="https://github.com/ndxbinh1922001/wallet/blob/master/WelcomeScreen.png">
 
