@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_icon_network/flutter_icon_network.dart';
@@ -109,49 +110,52 @@ class _HomeLoadWalletState extends State<HomeLoadWallet> {
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                             colors: [Color(0xFFB56FFF), Colors.lightBlue,Color(0xFFB56FFF),Colors.lightBlueAccent])),
-                    child:Column(children:[
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                                padding: EdgeInsets.only(top: 24, left: 24),
-                                alignment: Alignment.centerLeft,
-                                child: Text("Address",
+                    child:Padding(
+                      padding: const EdgeInsets.only(left:24,right:24),
+                      child: Column(children:[
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                  padding: EdgeInsets.only(top: 15),
+                                  alignment: Alignment.centerLeft,
+                                  child: Text("Address",
+                                      style: TextStyle(
+                                          fontSize: 27,
+                                          fontFamily: "SF Pro Display",
+                                          color: Colors.white))),
+                              Container(
+                                  height: 25,
+                                  child: Row(children: [
+                                    Container(
+                                        alignment: Alignment.bottomRight,
+                                        child: Text("Copy",
+                                            style: TextStyle(
+                                                color: Colors.white
+                                                    .withOpacity(0.5)))),
+                                    Container(
+                                        child: IconButton(
+                                            tooltip: "Copy address",
+                                            color: Colors.white.withOpacity(0.8),
+                                            onPressed: () {
+                                              Clipboard.setData(
+                                                  ClipboardData(text: "${widget._address}"));
+                                              final snackBar = SnackBar(
+                                                  content:
+                                                  Text("Copied address"));
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(snackBar);
+                                            },
+                                            icon: Icon(Icons.content_copy)))
+                                  ]))
+                            ]),
+                        Container(
+                            child: Center(
+                                child: Text("${widget._address}",
                                     style: TextStyle(
-                                        fontSize: 27,
-                                        fontFamily: "SF Pro Display",
-                                        color: Colors.white))),
-                            Container(
-                                height: 25,
-                                child: Row(children: [
-                                  Container(
-                                      alignment: Alignment.bottomRight,
-                                      child: Text("Copy",
-                                          style: TextStyle(
-                                              color: Colors.white
-                                                  .withOpacity(0.5)))),
-                                  Container(
-                                      child: IconButton(
-                                          tooltip: "Copy address",
-                                          color: Colors.white.withOpacity(0.8),
-                                          onPressed: () {
-                                            Clipboard.setData(
-                                                ClipboardData(text: "a"));
-                                            final snackBar = SnackBar(
-                                                content:
-                                                Text("Copied address"));
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(snackBar);
-                                          },
-                                          icon: Icon(Icons.content_copy)))
-                                ]))
-                          ]),
-                      Container(
-                          child: Center(
-                              child: Text("${widget._address}",
-                                  style: TextStyle(
-                                      color: Colors.white.withOpacity(0.5))))),
-                    ])
+                                        color: Colors.white.withOpacity(0.5))))),
+                      ]),
+                    )
                 ),
               ),
               Padding(
@@ -171,41 +175,41 @@ class _HomeLoadWalletState extends State<HomeLoadWallet> {
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [Color(0xFFB56FFF), Colors.lightBlue,Color(0xFFB56FFF),Colors.lightBlueAccent])),
-                  child:Stack(children:[
-                    Container(
-                      padding: EdgeInsets.only(left: 24),
-                      alignment: Alignment.centerLeft,
-                      child: RichText(
-                        text: TextSpan(
-                            text: 'Balance: ',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 27,
-                                fontFamily: "SF Pro Display"),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: " ${_balance.toStringAsFixed(4)}",
-                                style: TextStyle(
+                    child: Stack(children:[
+                      Container(
+                        padding: EdgeInsets.only(left: 24),
+                        alignment: Alignment.centerLeft,
+                        child: RichText(
+                          text: TextSpan(
+                              text: 'Balance: ',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 27,
+                                  fontFamily: "SF Pro Display"),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: " ${_balance.toStringAsFixed(4)}",
+                                  style: TextStyle(
+                                      fontFamily: "SF Pro Display",
+                                      color: Colors.white,
+                                      fontSize: 35,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                TextSpan(
+                                  text: ' TCX',
+                                  style: TextStyle(
                                     fontFamily: "SF Pro Display",
                                     color: Colors.white,
-                                    fontSize: 35,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              TextSpan(
-                                text: ' TCX',
-                                style: TextStyle(
-                                  fontFamily: "SF Pro Display",
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
-                              )
-                            ]),
+                                    fontSize: 15,
+                                  ),
+                                )
+                              ]),
+                        ),
                       ),
-                    ),
-                    Container(padding:EdgeInsets.only(right:10),alignment:Alignment.centerRight,child:IconButton(onPressed: (){_getBalance();},icon:Icon(Icons.refresh_outlined,size:35,color:Colors.white)))
-                  ]),
+                      Container(padding:EdgeInsets.only(right:10),alignment:Alignment.topRight,child:IconButton(onPressed: (){_getBalance();},icon:Icon(Icons.refresh_outlined,size:30,color:Colors.white)))
+                    ]),
+                  ),
                 ),
-              ),
               Padding(
                 padding: const EdgeInsets.all(24.0),
                 child: Container(
@@ -287,18 +291,21 @@ class _HomeLoadWalletState extends State<HomeLoadWallet> {
                                 blurRadius: 10,
                                 offset: Offset(8.0, 8.0))
                           ]),
-                          child: Row(children: [
-                            Container(
-                                padding: EdgeInsets.only(left: 12, right: 12),
-                                child: CircleAvatar(
-                                  child: Icon(Icons.send_to_mobile, size: 30),
-                                )),
-                            Text("Send ICX",
-                                style: TextStyle(
-                                    fontSize: 30,
-                                    fontFamily: "SF Pro Display",
-                                    color: Colors.black)),
-                            SizedBox(width: 140),
+                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
+                            Container(width: 200,child:Row(children: [
+                              Container(
+                                  padding: EdgeInsets.only(left: 12, right: 12),
+                                  child: CircleAvatar(
+                                    child: Icon(Icons.send_to_mobile, size: 30),
+                                  )),
+                              Text("Send ICX",
+                                  style: TextStyle(
+                                      fontSize: 30,
+                                      fontFamily: "SF Pro Display",
+                                      color: Colors.black)),
+                            ],)),
+
+
                             Container(
                                 child: Icon(
                                     !_show
@@ -400,7 +407,8 @@ class _HomeLoadWalletState extends State<HomeLoadWallet> {
                                                         fontSize: 25,
                                                         fontFamily: "SF Pro Display")),
                                                 Text(
-                                                  "Scan an ICON address via a QR code",
+                                                  "Scan an ICON address via a \nQR code",
+
                                                   style: TextStyle(
                                                       fontSize: 13,
                                                       color: Color(0xFFB5BBC9)),
@@ -431,19 +439,22 @@ class _HomeLoadWalletState extends State<HomeLoadWallet> {
                                 blurRadius: 10,
                                 offset: Offset(8.0, 8.0))
                           ]),
-                          child: Row(children: [
-                            Container(
-                                padding: EdgeInsets.only(left: 12, right: 12),
-                                child: CircleAvatar(
-                                  child:
-                                  Icon(Icons.center_focus_weak, size: 30),
-                                )),
-                            Text("Receive ICX",
-                                style: TextStyle(
-                                    fontSize: 30,
-                                    fontFamily: "SF Pro Display",
-                                    color: Colors.black)),
-                            SizedBox(width: 100),
+                          child: Row(mainAxisAlignment:MainAxisAlignment.spaceBetween,children: [
+                            Container(width: 250,child:Row(
+                              children: [
+                                Container(
+                                    padding: EdgeInsets.only(left: 12, right: 12),
+                                    child: CircleAvatar(
+                                      child:
+                                      Icon(Icons.center_focus_weak, size: 30),
+                                    )),
+                                Text("Receive ICX",
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        fontFamily: "SF Pro Display",
+                                        color: Colors.black)),
+                              ],
+                            )),
                             Container(
                                 child: Icon(Icons.arrow_right, size: 40),
                                 alignment: Alignment.centerRight)

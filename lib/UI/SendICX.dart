@@ -137,7 +137,7 @@ class SendICXState extends State<SendICX> {
                           color: Colors.black12,
                           style: BorderStyle.solid))),
               alignment: Alignment.centerLeft,
-              padding: EdgeInsets.only(bottom: 10, left: 20, top: 15),
+              padding: EdgeInsets.only(bottom: 10, left: 20, top: 15,right:20),
               child: Text(widget._walletAdress,
                   style: TextStyle(
                       fontSize: 15,
