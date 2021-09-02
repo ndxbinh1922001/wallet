@@ -21,3 +21,4 @@
  - WelcomeScreen
  ### Photo
 <img src="https://github.com/ndxbinh1922001/wallet/blob/master/welcomeScreen.png">
+<img src="https://github.com/ndxbinh1922001/wallet/blob/master/signup.png">
